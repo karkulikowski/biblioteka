@@ -10,7 +10,8 @@ defmodule FuelCalculator do
   representing a launch or land operation and the second element is the gravity of the planet
   @return The total amount of fuel needed
   """
-  @spec calculate_total_fuel_needed(pos_integer(), list()) :: pos_integer()
+  @spec calculate_total_fuel_needed(pos_integer(), list()) ::
+          pos_integer() | {:error, :wrong_mass} | {:error, :wrong_path}
   def calculate_total_fuel_needed(mass, path) do
     with {:ok, :mass_correct} <- validate_mass(mass),
          {:ok, :path_correct} <- validate_path(path) do
